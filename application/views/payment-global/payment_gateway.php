@@ -160,6 +160,7 @@
 
 <?php
 $payment_details = $this->session->userdata('payment_details');
+
 $payment_gateways = $this->db->where('status', 1)->get('payment_gateways')->result_array();
 ?>
 
