@@ -1,6 +1,6 @@
-<?php if(get_frontend_settings('recaptcha_status')): ?>
+<?php if (get_frontend_settings('recaptcha_status')): ?>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<?php endif; ?>
+<?php endif;?>
 
 <!---------- Header Section End  ---------->
 <section class="sign-up my-5 pt-5">
@@ -29,13 +29,13 @@
                                 <input class="form-control" id="last_name" type="text" name="last_name" placeholder="<?php echo get_phrase('Enter your last name'); ?>" required>
                             </div>
                         </div>
-                         <div class="mb-4">
-                                    <h5><?php echo get_phrase('Phone'); ?></h5>
-                                    <div class="position-relative">
-                                        <i class="fas fa-phone"></i>
-                                        <input class="form-control" id="phone" type="phone" name="phone" placeholder="<?php echo get_phrase('Enter your phone number'); ?>">
-                                    </div>
-                                </div>
+                        <div class="mb-4">
+                            <h5><?php echo get_phrase('Phone'); ?></h5>
+                            <div class="position-relative">
+                                <i class="fas fa-phone"></i>
+                                <input class="form-control" id="phone" type="text" name="phone" placeholder="<?php echo get_phrase('Enter your phone number'); ?>" maxlength="10" pattern="\d*" title="Please enter only numeric digits" required>
+                            </div>
+                        </div>
                         <div class="mb-4">
                             <h5><?php echo get_phrase('Your email'); ?></h5>
                             <div class="position-relative">
@@ -52,14 +52,14 @@
                             </div>
                         </div>
 
-                        <?php if(get_settings('allow_instructor')): ?>
+                        <?php if (get_settings('allow_instructor')): ?>
                             <div class="mb-4">
-                                <input id="instructor" type="checkbox" onchange="$('#become-instructor-fields').toggle()" name="instructor" value="yes" <?php echo isset($_GET['instructor']) ? 'checked':''; ?>>
+                                <input id="instructor" type="checkbox" onchange="$('#become-instructor-fields').toggle()" name="instructor" value="yes" <?php echo isset($_GET['instructor']) ? 'checked' : ''; ?>>
                                 <label for="instructor"><?php echo get_phrase('Apply to Become an instructor'); ?></label>
                             </div>
 
-                            <div id="become-instructor-fields" class="<?php echo isset($_GET['instructor']) ?  '':'d-hidden'; ?>">
-                               
+                            <div id="become-instructor-fields" class="<?php echo isset($_GET['instructor']) ? '' : 'd-hidden'; ?>">
+
                                 <div class="mb-4">
                                     <h5><?php echo get_phrase('Document'); ?> <small>(doc, docs, pdf, txt, png, jpg, jpeg)</small></h5>
                                     <div class="position-relative">
@@ -74,12 +74,12 @@
                                     </div>
                                 </div>
                             </div>
-                        <?php endif; ?>
+                        <?php endif;?>
 
-                        <?php if(get_frontend_settings('recaptcha_status')): ?>
+                        <?php if (get_frontend_settings('recaptcha_status')): ?>
                             <div class="g-recaptcha" data-sitekey="<?php echo get_frontend_settings('recaptcha_sitekey'); ?>"></div>
-                        <?php endif; ?>
-                        
+                        <?php endif;?>
+
                         <div class="log-in">
                             <button type="submit" class="btn btn-primary">
                                 <?php echo get_phrase('Sign Up') ?>
@@ -98,7 +98,10 @@
                     <!--    <div class="row">-->
                     <!--        <div class="col-md-12 text-center">-->
                                 <!-- <button type="button" class="btn btn-primary"><a href="#"><img loading="lazy" src="image/facebook.png"> Facebook</a></button> -->
-                    <!--            <?php if(get_settings('fb_social_login')) include "facebook_login.php"; ?>-->
+                    <!--            <?php if (get_settings('fb_social_login')) {
+    include "facebook_login.php";
+}
+?>-->
                     <!--        </div>-->
                     <!--    </div>-->
                     <!--</div>-->
@@ -107,3 +110,8 @@
         </div>
     </div>
 </section>
+<script>
+document.getElementById('phone').addEventListener('input', function() {
+    this.value = this.value.replace(/\D/g, ''); // Remove non-numeric characters
+});
+</script>
