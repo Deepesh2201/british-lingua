@@ -36,6 +36,7 @@ foreach ($banner_title_arr as $key => $value) {
                                     </button> -->
                                     <a href="<?php echo site_url('home/courses'); ?>" class="btn btn-sm btn-primary">Courses</a>
                                     <button class="btn btn-sm btn-primary" onclick="openForm();">Enquire Now</button>
+                                    <button class="btn btn-sm btn-primary mt-1" onclick="openAssessment();" id="">Take an Assessment Test Now</button>
 
                         </div>
                     </div>
@@ -45,6 +46,7 @@ foreach ($banner_title_arr as $key => $value) {
                             <span class="circleOne"><img src="<?php echo base_url("assets/frontend/default-new/image/circle1.png"); ?>" alt=""></span>
                             <span class="cirlceTwo"><img src="<?php echo base_url("assets/frontend/default-new/image/circle2.png"); ?>" alt=""></span>
                         </div>
+                        
                    </div>
 
                 </div>
@@ -211,14 +213,7 @@ foreach ($top_courses as $top_course):
 	                            <div class="courses-text">
 	                                <h5 class="mb-2"><?php echo $top_course['title']; ?></h5>
 	                                <div class="review-icon">
-	                                    <div class="review-icon-star align-items-center">
-	                                        <p><?php echo $average_ceil_rating; ?></p>
-	                                        <p><i class="fa-solid fa-star <?php if ($number_of_ratings > 0) {
-        echo 'filled';
-    }
-    ?>"></i></p>
-	                                        <p>(<?php echo $number_of_ratings; ?> <?php echo get_phrase('Reviews') ?>)</p>
-	                                    </div>
+	                                    
 	                                    <div class="review-btn d-flex align-items-center">
 	                                       <span class="compare-img checkPropagation" onclick="redirectTo('<?php echo base_url('home/compare?course-1=' . slugify($top_course['title']) . '&course-id-1=' . $top_course['id']); ?>');">
 	                                            <img loading="lazy" src="<?php echo base_url('assets/frontend/default-new/image/compare.png') ?>">
@@ -445,14 +440,7 @@ foreach ($latest_courses as $latest_course):
 	                                    <div class="courses-text">
 	                                        <h5 class="mb-2"><?php echo $latest_course['title']; ?></h5>
 	                                        <div class="review-icon">
-	                                            <div class="review-icon-star align-items-center">
-	                                                <p><?php echo $average_ceil_rating; ?></p>
-	                                                <p><i class="fa-solid fa-star <?php if ($number_of_ratings > 0) {
-        echo 'filled';
-    }
-    ?>"></i></p>
-	                                                <p>(<?php echo $number_of_ratings; ?> <?php echo get_phrase('Reviews') ?>)</p>
-	                                            </div>
+	                                            
 	                                            <div class="review-btn d-flex align-items-center">
 	                                            <span class="compare-img checkPropagation" onclick="redirectTo('<?php echo base_url('home/compare?course-1=' . slugify($latest_course['title']) . '&course-id-1=' . $latest_course['id']); ?>');">
 	                                                    <img loading="lazy" src="<?php echo base_url('assets/frontend/default-new/image/compare.png') ?>">
@@ -911,7 +899,7 @@ foreach ($latest_courses as $latest_course) {
 ?>
                <form action="<?php echo site_url('home/demo_payment'); ?>" method="post">
     <a href="javascript:void(0);" onclick="this.closest('form').submit();">
-        <img src="<?php echo base_url('assets/frontend/default-new/image/webiBanner3.png'); ?>" width="100%" alt="">
+        <img src="<?php echo base_url('assets/frontend/default-new/image/bannerPaidDemo.jpg'); ?>" width="100%" alt="">
     </a>
 </form>
             </div>
