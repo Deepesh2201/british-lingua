@@ -60,13 +60,13 @@ class Login extends CI_Controller
         if ($query->num_rows() > 0) {
             $row = $query->row();
             // Check if phone is verified
-            if ($row->email_verified == 0) {
-                $this->session->set_userdata('email', $email);
-                $page_data['page_name'] = 'verification_code';
-            $page_data['page_title'] = site_phrase('verification_code');
-            $this->load->view('frontend/' . get_frontend_settings('theme') . '/index', $page_data);
-            }
-            else{
+            // if ($row->email_verified == 0) {
+            //     $this->session->set_userdata('email', $email);
+            //     $page_data['page_name'] = 'verification_code';
+            // $page_data['page_title'] = site_phrase('verification_code');
+            // $this->load->view('frontend/' . get_frontend_settings('theme') . '/index', $page_data);
+            // }
+            // else{
 
             
             // Check if phone is verified
@@ -77,7 +77,7 @@ class Login extends CI_Controller
                 $this->user_model->set_login_userdata($row->id);
                 redirect(site_url('user'), 'refresh');
             }
-        }
+        // }
         } else {
             $this->session->set_flashdata('error_message', get_phrase('invalid_login_credentials'));
             redirect(site_url('login'), 'refresh');
